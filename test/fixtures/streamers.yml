@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  uid: MyString
+  channel_name: MyString
+  avatar_url: MyString
+  access_token: MyString
+  refresh_token: MyString
+
+two:
+  uid: MyString
+  channel_name: MyString
+  avatar_url: MyString
+  access_token: MyString
+  refresh_token: MyString

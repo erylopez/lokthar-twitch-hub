@@ -1,0 +1,25 @@
+{
+  "name": "lokthar",
+  "private": true,
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.13.0",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "5.4.0",
+    "@yaireo/tagify": "^3.18.0",
+    "bootstrap": "^4.5.0",
+    "choices.js": "^9.0.1",
+    "flatpickr": "^4.6.6",
+    "jquery": "^3.5.1",
+    "lg-thumbnail.js": "^1.2.0",
+    "lg-video.js": "^1.2.0",
+    "lightgallery": "^1.8.2",
+    "popper.js": "^1.16.1",
+    "resolve-url-loader": "^3.1.1"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
+}

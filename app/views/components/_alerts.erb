@@ -1,0 +1,22 @@
+<div aria-live="polite" aria-atomic="true" style="position: relative;">
+  <% if notice %>
+    <div class="toast toast-success" style="position: absolute; top: 0; right: 0;" data-delay="3500">
+      <div class="toast-body">
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= notice %>
+      </div>
+    </div>
+  <% end %>
+  <% if alert %>
+    <div class="toast toast-error" style="position: absolute; top: 0; right: 0;" data-delay="3500">
+      <div class="toast-body">
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <%= alert %>
+      </div>
+    </div>
+  <% end %>      
+</div>

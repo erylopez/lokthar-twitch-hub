@@ -1,0 +1,23 @@
+.c--panel{
+  margin: 0 auto;
+  max-width: 1100px;
+
+  .panel {
+    margin: 50px auto;
+    padding: 12px 30px;
+    height: 100%;
+    border-width: 2px;
+    background: rgba(1,4,12,.87);
+    position: relative;
+    box-shadow: 0 0 0 1px rgba(1,10,19,.48);
+
+    border: 2px solid transparent;
+    -o-border-image: linear-gradient(0deg,#614a1f 0,#463714 5px,#463714) 1 stretch;
+    border-image: linear-gradient(0deg,#614a1f 0,#463714 5px,#463714) 1 stretch;
+    border-color: #463714;
+
+    @media (max-width: 780px) {
+      width: 100%;
+    }
+  }
+}

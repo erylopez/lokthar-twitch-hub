@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  streamer: one
+  uid: MyString
+  image: MyString
+  background_color: MyString
+  is_enabled: false
+  cost: 1
+  title: MyString
+  prompt: MyString
+  is_user_input_required: false
+  max_per_stream_enabled: false
+  max_per_stream: 1
+  max_per_user_per_stream_enabled: false
+  max_per_user_per_stream: 1
+  global_cooldown_enabled: false
+  global_cooldown_seconds: 1
+  is_paused: false
+  is_in_stock: false
+  default_image_1x: MyString
+  default_image_2x: MyString
+  default_image_3x: MyString
+  should_redemptions_skip_request_queue: false
+  cooldown_expires_at: MyString
+
+two:
+  streamer: two
+  uid: MyString
+  image: MyString
+  background_color: MyString
+  is_enabled: false
+  cost: 1
+  title: MyString
+  prompt: MyString
+  is_user_input_required: false
+  max_per_stream_enabled: false
+  max_per_stream: 1
+  max_per_user_per_stream_enabled: false
+  max_per_user_per_stream: 1
+  global_cooldown_enabled: false
+  global_cooldown_seconds: 1
+  is_paused: false
+  is_in_stock: false
+  default_image_1x: MyString
+  default_image_2x: MyString
+  default_image_3x: MyString
+  should_redemptions_skip_request_queue: false
+  cooldown_expires_at: MyString

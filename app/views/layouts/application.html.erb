@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Lokthar</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <% if Rails.env.development? %>
+      <link rel="preconnect" href="http://localhost:3035">
+    <% else %>
+      <link rel="preconnect" href="https://lokthar.com">
+    <% end %>
+    <%= action_cable_meta_tag %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+    <%= javascript_pack_tag 'application', defer: true %>
+    <%= yield :header_js %>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&Open+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IM+Fell+DW+Pica&display=swap" rel="stylesheet" defer=true>
+  </head>
+
+  <body class="<%= yield :layout_body_css %>">
+    <%= render '/components/navbar' %>
+    <%= render '/components/alerts' %>
+    <%= yield %>
+  </body>
+</html>

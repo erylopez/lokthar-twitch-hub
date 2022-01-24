@@ -1,0 +1,22 @@
+@import './layouts/_homepage.scss';
+
+@import '@fortawesome/fontawesome-free';
+
+@import './libs/bootstrap_bundle';
+@import './common/_colors.scss';
+@import './layouts/_base.scss';
+@import './layouts/_onboarding.scss';
+@import './layouts/_reclutamiento.scss';
+@import './components/navbar';
+@import './components/panel';
+@import './components/footer';
+@import './components/toast';
+
+@import "flatpickr";
+$choices-button-icon-path: "~choices.js/src/icons";
+@import '~choices.js/src/styles/choices';
+@import 'lightgallery/dist/css/lightgallery';
+#lightgallery img {
+    width: 206px;
+}
+@import "@yaireo/tagify/src/tagify.scss";

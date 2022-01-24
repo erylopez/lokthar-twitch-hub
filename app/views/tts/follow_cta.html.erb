@@ -1,0 +1,24 @@
+<div class="container">
+  <h2></h2>
+  <div class="jumbotron text-light-gray gradient-purple-w-border">
+    <h1 class="display-4"><%= @streamer.channel_name %> TTS</h1>
+    <p class="lead">
+      Escribe un mensaje para que sea reproducido como audio en el stream!.<br>
+      <small>Si quieres una guia de 'efectos especiales' para hacer memes con esto, <a class="link-purple-light" href="https://docs.google.com/document/d/1qLKdc3QArtn6PVuGf42EfoMuzvLE_ykWwU1RViEcrbU/edit">revisa aqui</a> <img src="https://emoji.gg/assets/emoji/kappa.png" width="35"></small>
+    </p>
+  </div>
+
+  <div class="alert alert-danger toast-error " role="alert">
+    Para poder mandar mensajes necesitas al menos ser follower de <a href="https://twitch.tv/<%= @streamer.channel_name %>" class="alert-link">https://twitch.tv/<%= @streamer.channel_name %></a>
+  </div>
+
+  <%= form_with model: @tts_item, url: tts_path,class: 'tts_form', local: true do |f|%>
+    <div class="form-group">
+      <%= f.label :text_to_speach, "Texto a reproducir:" %>
+      <%= f.text_area :text_to_speach, class: 'form-control', rows: 3, maxlength: 255, disabled: true %>
+    </div>
+    <div class="form-group">
+      <div class="btn btn-secondary">Necesitas ser follower</div>
+    </div>
+  <% end %>
+</div>

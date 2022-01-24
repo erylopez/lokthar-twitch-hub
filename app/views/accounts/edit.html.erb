@@ -1,0 +1,39 @@
+<% content_for(:layout_body_css) {'l--onboarding'} %>
+<% content_for :header_js do %>
+  <%= javascript_pack_tag 'onboarding', defer: true %>
+<% end %>
+<div class="onboarding-container">
+  <div class="panel panel-border">
+    <div class="panel-header">
+      <h2><span><%= current_user.name.upcase %> / </span>Datos de tu Cuenta</h2>
+    </div>
+    <div class="panel-body">
+      <hr>
+      <h2>Discord sync</h2>
+      <%= render 'discord' %>
+      <hr>
+      <h2>Puntos</h2>
+      <p><%= current_user.points %></p>
+      <hr>
+      <div class="d-flex">
+        <div class="p-2 flex-fill">
+          <h2>Nick</h2>
+          <p><%= current_user.name %></p>
+        </div>
+        <div class="p-2 flex-fill">
+          <h2>Pais</h2>
+          <p><%= current_user.country %></p>
+        </div>
+        <div class="p-2 flex-fill">
+          <h2>Cumpleaños</h2>
+          <p><%= "#{current_user.birth_day}/#{current_user.birth_month}" %></p>
+        </div>
+      </div>
+
+      <br>
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <%= link_to 'Volver al Home', '/', class: 'btn btn-primary btn-reset btn-sm' %>
+      </div>
+    </div>
+  </div>
+</div>

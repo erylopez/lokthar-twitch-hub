@@ -1,0 +1,45 @@
+<div class="container mt-5 queue-data" data-streamer="<%= @streamer.channel_name %>">
+  <div class="alert alert-primary text-light-gray gradient-purple-w-border" role="alert">
+    Beta v0.1.1 - Participa del desarrollo aportando feedback en Discord!
+  </div>
+
+  <% if @streamer.last_topic %>
+    <h2 class="pt-5">Quick Vote: <%= @streamer.last_topic&.topic %></h2>
+    <h5>Votos: <%= @streamer.last_topic&.last_counter %></h5>
+    <div class="py-3">
+      <%= link_to streamers_quick_vote_path(id: (@streamer.last_topic || 0), requested_action: 'close'), method: :put, class: 'btn btn-primary' do %>
+        <i class="fas fa-stop"></i> CERRAR
+      <% end %>
+      <a href="#" class="tts-reload btn btn-primary"><i class="fas fa-sync"></i> Reload Widget</a>
+    </div>
+  <% else %>
+    <h5 class="pt-5">No hay ningun quick vote activo en este momento</h5>
+  <% end %>
+    
+  <h2 class="pt-5">Nuevo topico</h2>
+  <%= form_with model: @quick_vote, url: streamers_quick_votes_path(streamer: @streamer.channel_name), local: true do |f|%>
+    <div class="form-group">
+      <%= f.label :topic, "Texto a reproducir:" %>
+      <%= f.text_area :topic, class: 'form-control', rows: 3, maxlength: 255 %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Enviar" %>
+    </div>
+  <% end %>
+
+  <h2 class="pt-5">Quick Votes pasados</h2>
+  <div class="list-group">
+    <% @streamer.quick_vote_topics.closed.last(10).each do |quick_vote_topic| %>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= quick_vote_topic.topic %></h5>
+          
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary px-5"> <%= quick_vote_topic.last_counter %> </button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+</div>

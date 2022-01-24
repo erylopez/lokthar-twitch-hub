@@ -1,0 +1,32 @@
+.text-light-gray {
+  color: #eaeaea;
+}
+
+.gradient-purple-w-border {
+  border-color: #bc64ff;
+  background-image: linear-gradient(90deg, #5132c0, #8f2df0);
+}
+
+.gradient-purple {
+  background-image: linear-gradient(90deg, #5132c0, #8f2df0);
+}
+
+.bg-primary-dark-purple {
+  background-color: #5c12a6;
+}
+
+.bg-primary-dark-purple:hover {
+  background-color: #4b0f88;
+}
+
+.text-light-gray.bg-primary-dark-purple:hover {
+  color: #eaeaea;
+}
+
+.link-purple-light {
+  color: #c896ff;
+}
+
+.link-purple-light:hover {
+  color: #eaeaea;
+}

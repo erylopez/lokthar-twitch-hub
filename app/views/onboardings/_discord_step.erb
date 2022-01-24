@@ -1,0 +1,15 @@
+<% if current_user.discord_uid.present? %>
+  <button class="btn btn-lg btn-primary" type="button">
+    <i class="fab fa-discord"></i>
+    <div class="btn-text"><%= current_user.discord_tag %></div>
+  </button>
+  <div class="small">Sumaste 1000 puntos por vincular tu discord</div>
+<% else %>
+  <%= link_to user_discord_omniauth_authorize_path, class: 'btn btn-lg btn-primary' do %>
+    <i class="fab fa-discord"></i>
+    <div class="btn-text">Vincular Discord</div>
+    <span class="badge badge-light discord-badge">+1000 pts</span>
+  <% end %>
+  <br>
+  <div class="small">Al vincular tu cuenta tambien podrás sumar puntos desde nuestro servidor de discord y participar de sorteos/desafios exclusivos</div>
+<% end %>

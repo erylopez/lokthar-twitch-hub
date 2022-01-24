@@ -1,0 +1,59 @@
+<div class="c--panel">
+  <div class="panel">
+    <h1>Memory Vault</h1>
+    <p>[PAGINA EN DESARROLLO] Estamos subiendo videos a youtube/twitch y screenshots de nuestro paso por BDO a <a href="https://imgur.com">imgur.com</a>, pronto encontraras todos los albumes aqui</p>
+    <p>Puedes subir tus albumes tambien usando el comando de discord <code>!compartir https://imgur.com/gallery/9SeeFjO</code> (y/o link de youtube/twitch) , un moderador revisara tu album y será publicado aqui! (y tambien ganaras puntos por ello)</p>
+    <hr>
+    <h2>Black Desert</h2>
+    <ul class="list-group bg-dark text-white">
+      <% @albums.each do |album| %>
+        <%= link_to album_path(album), class: 'text-white' do %>
+          <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+            <%= album.title %>
+            <span class="badge badge-primary badge-pill"><%= album.imgur_response.count %></span>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+    <hr>
+    <h2>Elder Scrolls Online</h2>
+    <ul class="list-group bg-dark text-white">
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+        <i class="text-muted">< Esperando upload ></i>
+        <span class="badge badge-primary badge-pill">0</span>
+      </li>
+    </ul>
+    <hr>
+    <h2>Lineage 2</h2>
+    <ul class="list-group bg-dark text-white">
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+        <i class="text-muted">< Esperando upload ></i>
+        <span class="badge badge-primary badge-pill">0</span>
+      </li>
+    </ul>
+    <hr>
+    <h2>Phantasy Star Online 2</h2>
+    <ul class="list-group bg-dark text-white">
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+        <i class="text-muted">< Esperando upload ></i>
+        <span class="badge badge-primary badge-pill">0</span>
+      </li>
+    </ul>
+    <hr>
+    <h2>Otros</h2>
+    <ul class="list-group bg-dark text-white">
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+        <i class="text-muted">Among Us - < Esperando upload ></i>
+        <span class="badge badge-primary badge-pill">0</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+        <i class="text-muted">Fallguys - < Esperando upload ></i>
+        <span class="badge badge-primary badge-pill">0</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center bg-dark">
+        <i class="text-muted">Pummel Party - < Esperando upload ></i>
+        <span class="badge badge-primary badge-pill">0</span>
+      </li>
+    </ul>
+  </div>
+</div>

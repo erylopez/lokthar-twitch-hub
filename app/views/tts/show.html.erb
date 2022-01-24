@@ -1,0 +1,50 @@
+<div class="container">
+  <h2></h2>
+  <div class="jumbotron text-light-gray gradient-purple-w-border">
+    <h1 class="display-4"><a class="text-light" href="<%= tt_path(id: @streamer.channel_name) %>"><%= @streamer.channel_name %> TTS</a></h1>
+    <p class="lead">
+      Escribe un mensaje para que sea reproducido como audio en el stream!.<br>
+      <small>Si quieres una guia de 'efectos especiales' para hacer memes con esto, <a class="link-purple-light" href="https://docs.google.com/document/d/1qLKdc3QArtn6PVuGf42EfoMuzvLE_ykWwU1RViEcrbU/edit">revisa aqui</a> <img src="https://emoji.gg/assets/emoji/kappa.png" width="35"></small>
+    </p>
+  </div>
+
+  <% if @tts_item.errors.any? %>
+    <div class="card text-white bg-danger mb-3">
+      <div class="card-header">Error</div>
+      <div class="card-body">
+        <ul>
+          <% @tts_item.errors.full_messages.each do |message|%>
+            <li><%= message %></li>
+          <% end %>  
+        </ul>
+      </div>
+    </div>
+  <%end%>
+
+  <div class="alert alert-primary text-light-gray gradient-purple-w-border" role="alert">
+    <% if @daily_limit > 3 %>
+      Puedes mandar mensajes sin limite diario! Recuerda que deben pasar 10 minutos entre mensaje y mensaje para evitar spam.
+    <% elsif @daily_limit < 1%>
+      Superaste el limite diario de mensajes. Obten mensajes ilimitados diarios suscribiendote a <a href="https://twitch.tv/<%= @streamer.channel_name %>" class="alert-link">https://twitch.tv/<%= @streamer.channel_name %></a>
+    <% else %>
+      Aun puedes enviar <%= pluralize(@daily_limit, "mensaje") %> hoy. Obten mensajes ilimitados diarios suscribiendote a <a href="https://twitch.tv/<%= @streamer.channel_name %>" class="alert-link">https://twitch.tv/<%= @streamer.channel_name %></a>
+    <% end %>
+  </div>
+
+  
+  <% if @timer_ends_at > Time.zone.now %>
+    <div class="tts-timer" data-timer-ends-at="<%= @timer_ends_at %>" id="clockdiv">
+      <b>Espera <span class="tts-time-left"><span class="minutes"></span>:<span class="seconds"></span></span> antes de enviar otro mensaje</b>
+    </div>
+  <% end %>
+
+  <%= form_with model: @tts_item, url: tts_path(id: @streamer.channel_name),class: 'tts_form', local: true do |f|%>
+    <div class="form-group">
+      <%= f.label :text_to_speach, "Texto a reproducir:" %>
+      <%= f.text_area :text_to_speach, class: 'form-control', rows: 3, maxlength: 255 %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Enviar" %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,103 @@
+<% content_for(:layout_body_css) {'l--reclutamiento'} %>
+<% content_for :header_js do %>
+  <%= javascript_pack_tag 'onboarding', defer: true %>
+<% end %>
+
+<div style="
+background-repeat: no-repeat;
+background: url(https://i.imgur.com/OwwFifB.png);
+background-size: cover;
+background-position-x: center;" class="top-image"></div>
+<div class="c--panel">
+  <div class="panel">
+    <div class="container">
+      <h1>Sistema de Creditos</h1>
+      <hr>
+      <div class="row">
+        <div class="col-sm">
+          <h2>Acerca del sistema</h2>
+          <p>Nuestra comunidad nos inspira a seguir creciendo. Tu participacion en ella nos permite crecer y ahora tenemos
+          una forma de compensar esa dedicacion!</p>
+          <p>Conecta tu cuenta de Twitch y discord y comienza a ganar puntos y creditos, los cuales podras usar para acceder a beneficios exclusivos de nuestros partners, y para canjearlos en nuestra tienda virtual.</p>
+
+          <h2>Como juntar puntos</h2>
+          <p>Estamos constantemente pensando en formas para que puedas ganar puntos mientras participas de nuestra comunidad</p>
+          <p>Actualmente puedes conseguir puntos por:</p>
+          <ul>
+            <li>Ver streams de nuestro equipo de Twitch</li>
+            <li>Chateando y aportando en Discord</li>
+            <li>Interactuando en nuestras redes sociales</li>
+            <li>Participando de eventos organizados por la comunidad</li>
+            <li>Jugando alguno de los mmo donde estamos activos</li>
+            <li>Completando alguno de los bounty de la comunidad</li>
+          </ul>
+        </div>
+        <div class="col-sm">
+          <h2>Beneficios</h2>
+          <div class="card mb-3 bg-transparent" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-2 pt-2">
+                <img src="https://images.ctfassets.net/j95d1p8hsuun/1Z2ttWbGTYkdlgTDYeIlKt/e6a567577f1619055aa2bf93155515dc/NW-star-96x.png">
+              </div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h5 class="card-title">GAME ACCESS</h5>
+                  <p class="card-text">Keys para acceso anticipado a ciertos titulos. Copias completas de juegos pagos.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card mb-3 bg-transparent" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-2 pt-2">
+                <img src="https://images.ctfassets.net/j95d1p8hsuun/4m8fuVtvXMRGHgV2O6OOpV/7a57e8c7d7b6dcf991b0b55c6e722627/NW-coins-96x.png">
+              </div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h5 class="card-title">ITEMS</h5>
+                  <p class="card-text">Items/Bonificaciones para ciertos juegos, p2w incluido!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 bg-transparent" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-2 pt-2">
+                <img src="https://images.ctfassets.net/j95d1p8hsuun/4S4IZ2TrYkkXNS87XnCcqV/7bfb00778fbf18e7ac53052ba0045dba/NW-compass-96x.png">
+              </div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h5 class="card-title">TIENDA VIRTUAL</h5>
+                  <p class="card-text">Beneficios para lucir dentro de nuestra comunidad, titulos, insignias, subscripciones, discord nitro, etc.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3 bg-transparent" style="max-width: 540px;">
+            <div class="row no-gutters">
+              <div class="col-md-2 pt-2">
+                <img src="https://images.ctfassets.net/j95d1p8hsuun/4YU9uUEGhdZfzXarU36w26/3fff7061a28af883b613ebc1eebf3531/NW-skull-96x.png">
+              </div>
+              <div class="col-md-10">
+                <div class="card-body">
+                  <h5 class="card-title">OTROS</h5>
+                  <p class="card-text">A medida que consigamos mas oportunidades agregaremos mas beneficios!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- row -->
+      <div class="d-flex justify-content-center">
+        <% unless current_user %>
+        <br>
+          <%= link_to user_twitch_omniauth_authorize_path, class: 'btn btn-primary' do %>
+            <i class="fab fa-twitch"></i> Ingresar usando Twitch
+          <% end %>
+        <% end %>
+      </div>
+      
+    </div>
+  </div>
+</div>

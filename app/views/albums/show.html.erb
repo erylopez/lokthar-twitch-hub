@@ -1,0 +1,21 @@
+<div class="c--panel">
+  <div class="panel">
+    <h2>Videos</h2>
+    <div id="videogallery">
+      <% @album.videos.each do |video| %>
+        <a href="<%= video %>" data-poster="http://i3.ytimg.com/vi/Av2GJfIhyWg/hqdefault.jpg" class="video">
+          <%= image_tag "http://i3.ytimg.com/vi/#{video.split('=').last}/hqdefault.jpg" %>
+        </a>
+      <% end %>
+    </div>
+    <hr>
+    <h2>Fotos</h2>
+    <div class="d-flex flex-wrap" id="lightgallery">
+      <% @album.imgur_response.each do |image| %>
+        <a href="<%= image %>">
+          <img src="<%= image %>">  
+        </a>
+      <% end %>
+    </div>
+  </div>
+</div>

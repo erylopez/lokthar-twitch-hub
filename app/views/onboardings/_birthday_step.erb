@@ -1,0 +1,12 @@
+<hr>
+<% if current_user.birth_day.present? %>
+  <p>Sumaste 500 puntos por anotar tu cumpleaños en el calendario.</p>
+<% else %>
+  <p>Sumate al calendario de cumpleaños para recibir futuros regalos!</p>
+  <input type="text" name="birthday" id="birthday" data-endpoint="<%= birthday_accounts_path %>">
+  <button type="submit" id="submit-birthday" class="btn btn-primary">
+    <div class="btn-text">Guardar</div>
+    <span class="badge badge-light birthday-badge">+500 pts</span>
+  </button>
+  <div class="text-danger small pt-1 birthday-error d-none" role="alert"></div>
+<% end %>

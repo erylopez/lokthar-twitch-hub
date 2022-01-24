@@ -1,0 +1,26 @@
+<% content_for(:layout_body_css) {'l--onboarding'} %>
+<% content_for :header_js do %>
+  <%= javascript_pack_tag 'onboarding', defer: true %>
+<% end %>
+<div class="onboarding-container">
+  <div class="panel panel-border">
+    <div class="panel-header">
+      <h2><span><%= current_user.name.upcase %> / </span>Completa tus datos</h2>
+    </div>
+    <div class="panel-body">
+      <hr>
+      <p>
+        Obten puntos extra dentro de la comunidad completando los siguientes datos
+      </p>
+      <br>
+      <%= render 'discord_step' %>
+      <%= render 'birthday_step' %>
+      <%= render 'country_step' %>
+      <br>
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <%= link_to 'Ver mi perfil', cuenta_path, class: 'btn btn-primary btn-reset btn-sm ml-1' %>
+        <%= link_to 'Volver al Home', '/', class: 'btn btn-primary btn-reset btn-sm' %>
+      </div>
+    </div>
+  </div>
+</div>

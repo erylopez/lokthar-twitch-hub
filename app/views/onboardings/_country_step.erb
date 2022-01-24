@@ -1,0 +1,15 @@
+<hr>
+<% if current_user.country.present? %>
+  <p>Sumaste 500 puntos por agregar tu País en tu perfil (<%= current_user.country %>).</p>
+<% else %>
+  <p>En que pais estas viviendo?</p>
+  <div class="form-group">
+    <select class="form-control" name="country" id="country" data-endpoint="<%= country_accounts_path %>"></select>
+    <button type="submit" id="submit-country" class="btn btn-primary">
+      <div class="btn-text">Guardar</div>
+      <span class="badge badge-light country-badge">+500 pts</span>
+    </button>
+    <div class="text-danger small pt-1 country-error d-none" role="alert"></div>
+    <div class="small small-country">Nos permite coordinar para envios de productos fisicos en latinoamerica</div>
+  </div>
+<% end %>

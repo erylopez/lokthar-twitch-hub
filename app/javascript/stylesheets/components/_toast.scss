@@ -1,0 +1,15 @@
+.toast {
+  z-index: 100;
+  margin-right: 25px;
+  min-width: 350px;
+}
+
+.toast-success {
+  background: #47ff67;
+  color: #385643;
+}
+
+.toast-error {
+  background: #ff4747;
+  color: #462f2f;
+}

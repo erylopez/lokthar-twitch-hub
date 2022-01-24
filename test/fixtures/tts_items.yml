@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  streamer: one
+  text_to_speach: MyString
+  pending: false
+  accepted: false
+
+two:
+  user: two
+  streamer: two
+  text_to_speach: MyString
+  pending: false
+  accepted: false

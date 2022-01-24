@@ -1,0 +1,48 @@
+<div class="container">
+  <h2>Albums</h2>
+
+  <div class="d-flex flex-row-reverse">
+    <div class="p-2">
+      <%= link_to "Nuevo Album", new_admin_album_path, class: 'btn btn-primary' %>
+    </div>
+    <div class="p-2"><a href="/" class="btn btn-secondary">Volver atras</a></div>
+  </div>
+
+  <table class="table table-striped table-dark">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Title</th>
+        <th scope="col">Images</th>
+        <th scope="col">Imgur URL</th>
+        <th scope="col">Published</th>
+        <th scope="col">Last sync</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @albums.ordered.each do |album| %>
+        <tr>
+          <th scope="row"><%= album.id %></th>
+          <td><%= album.title %></td>
+          <td><%= album.imgur_response.count %></td>
+          <td><%= album.imgur_url %></td>
+          <td><%= album.published? ? "Published" : "Private" %></td>
+          <td><%= album.imgur_sync_at %></td>
+          <td>
+            <div class="btn-group" role="group" aria-label="album-actions">
+              <%= link_to "Show", admin_album_path(album), class: 'btn btn-primary' %>
+              <%= link_to "Edit", edit_admin_album_path(album), class: 'btn btn-primary' %>
+              <% if album.published? %>
+                <%= link_to "Unpublish", admin_album_toggle_publish_path(album), class: 'btn btn-secondary' %>
+              <% else %>
+                <%= link_to "Publish", admin_album_toggle_publish_path(album), class: 'btn btn-warning' %>
+              <% end %>
+              <%= link_to "Sync", admin_album_sync_path(album), class: 'btn btn-primary' %>
+            </div>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

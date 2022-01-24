@@ -1,0 +1,32 @@
+<div class="p-2">
+  <% if @album.errors.any? %>
+    <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
+      <div class="card-header">Error</div>
+      <div class="card-body">
+        <ul>
+          <% @album.errors.full_messages.each do |message|%>
+            <li><%= message %></li>
+          <% end %>  
+        </ul>
+      </div>
+    </div>
+  <%end%>
+
+  <%= form_for([:admin, @album], remote: false) do |f| %>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :imgur_url %>
+      <%= f.text_field :imgur_url, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :video_collection %>
+      <%= f.text_field :video_collection, class: 'form-control js--tagify-video-urls' %>
+    </div>
+
+    <%= f.submit "Guardar" %>
+  <% end %>
+</div>

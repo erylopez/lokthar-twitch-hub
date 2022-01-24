@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  streamer: one
+  follow_date: 2020-11-10 11:56:35
+  subscription_data: 
+  subscription_date: 2020-11-10 11:56:35
+
+two:
+  user: two
+  streamer: two
+  follow_date: 2020-11-10 11:56:35
+  subscription_data: 
+  subscription_date: 2020-11-10 11:56:35

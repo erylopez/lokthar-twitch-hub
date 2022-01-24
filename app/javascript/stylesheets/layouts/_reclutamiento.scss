@@ -1,0 +1,37 @@
+.l--reclutamiento {
+  .top-image {
+    width:100%;
+    height:300px
+  }
+
+  h1,h2,h3,h4 { font-family: 'IM Fell DW Pica', serif;  }
+
+  h1 {
+    text-align: center;
+    padding-top:20px;
+    padding-bottom: 10px;
+  }
+
+  h2 {
+    color: #9e947e;
+    padding: 15px 0px;
+  }
+
+  .card-title {
+    color: #fff1ce;
+    font-size: .8125rem;
+    line-height: 1;
+    letter-spacing: .24em;
+    text-transform: uppercase;
+  }
+
+  hr {
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    height: 1px;
+    margin: 1em auto;
+    border: 0;
+    background: #353022;
+  }
+}

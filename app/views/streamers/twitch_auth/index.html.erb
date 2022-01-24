@@ -1,0 +1,21 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div class="jumbotron" style="background-color:#1a0d29">
+        <h1 class="display-4">Hola <%= current_user.name %></h1>
+        <p class="lead">Estamos preparando herramientas para streamers en Lokthar! por el momento todas estan en desarrollo, pero podras ir usando algunas utilidades como TTS, comandos de bot y creditos Lokthar</p>
+        <hr class="my-4">
+        <p>Primero debes darnos permisos para poder integrarnos a tu perfil de twitch como streamer:</p>
+        <div class="text-center">
+          <%= link_to "Integrar mi canal de Twitch", ("https://id.twitch.tv/oauth2/authorize"+
+        "?client_id=#{ENV["TWITCH_CLIENT_ID"]}"+
+        "&redirect_uri=#{flow_streamers_twitch_auth_index_url}"+
+        "&response_type=code"+
+        "&scope=channel:read:subscriptions+user:read:email+channel:manage:redemptions"+
+        "&force_verify=true"), class: 'btn btn-lg btn-primary' %>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>

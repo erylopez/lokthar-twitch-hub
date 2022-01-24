@@ -1,0 +1,108 @@
+.l--onboarding {
+  background: url(https://lolstatic-a.akamaihd.net/accountodactyl-ui/assets/bg.36a20fc96ad47a455a8d263c83f1901f.jpg);
+  .onboarding-container {
+    margin: 0 auto;
+    max-width: 1100px;
+    font-size: 30px;
+    color: #fff;
+    line-height: 20px;
+
+    a {
+      color: #cdbe91;
+      &:hover {
+        text-decoration: none;
+        color: #ccc;
+      }
+    }
+
+    h2 {
+      font-family: 'IM Fell DW Pica', serif;
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 1.5;
+      letter-spacing: .1em;
+      span {
+        letter-spacing: .2em;
+        color: #a09b8c;
+      }
+    }
+
+    p {
+      font-family: Ubuntu;
+      color: rgb(213, 213, 213);
+      font-weight: 400;
+      font-style: normal;
+      font-size: 1.2rem;
+      letter-spacing: .01em;
+    }
+
+    hr {
+      height: 1px;
+      margin: 1em 0;
+      border: 0;
+      background: #715e2b;
+    }
+
+    .small {
+      color: #888592;
+      padding-top: 12px;
+      font-size: 14px;
+      line-height: 18px;
+    }
+
+    .panel {
+      margin: 80px auto;
+      padding: 13px 25px;
+      width: 780px;
+      height: 100%;
+      border-width: 2px;
+      background: rgba(1,4,12,.87);
+      position: relative;
+      box-shadow: 0 0 0 1px rgba(1,10,19,.48);
+
+      @media (max-width: 780px) {
+        width: 100%;
+      }
+    }
+
+    .panel-border {
+      border: 2px solid transparent;
+      -o-border-image: linear-gradient(0deg,#614a1f 0,#463714 5px,#463714) 1 stretch;
+      border-image: linear-gradient(0deg,#614a1f 0,#463714 5px,#463714) 1 stretch;
+      border-color: #463714;
+    }
+
+    .btn {
+      color: #fff;
+      position: relative;
+      height: 44px;
+      .btn-text {
+        display: inline-block;
+        padding-left: 6px;
+      }
+      .badge {
+        position: absolute;
+        top: -10px;
+        right: -30px;
+      }
+    }
+
+    .btn-reset {height: inherit;}
+
+    .choices { margin-top: -2px; }
+    .choices { color: #000; }
+
+    input.form-control.input, .choices {
+      vertical-align: top;
+      padding-top: 2px;
+      width: 308px;
+      height: 44px;
+      display: inline-block;
+    }
+
+    .small-country{
+      padding-top: 0;
+      margin-top: -12px;
+    }
+  }
+}

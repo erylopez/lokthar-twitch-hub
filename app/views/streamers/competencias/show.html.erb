@@ -1,0 +1,43 @@
+<div class="container mt-5 queue-data" data-streamer="<%= @streamer.channel_name %>">
+  <div class="alert alert-primary text-light-gray gradient-purple-w-border" role="alert">
+    Beta v0.1.1 - Participa del desarrollo aportando feedback en Discord!
+  </div>
+
+  <h2 class="pt-5">Chistes<%= link_to ("https://id.twitch.tv/oauth2/authorize"+
+      "?client_id=#{ENV["TWITCH_CLIENT_ID"]}"+
+      "&redirect_uri=#{flow_streamers_twitch_auth_index_url}"+
+      "&response_type=code"+
+      "&scope=channel:read:subscriptions+user:read:email+channel:manage:redemptions"+
+      "&force_verify=true"), class: 'btn text-light' do %>
+    <i class="fas fa-sync"></i>
+  <% end %></h2>
+  <audio src="/<%= @streamer.channel_name %>.mp3?cache=<%= SecureRandom.hex %>" preload="auto" id="ttsAudio"></audio>
+
+  <div class="py-3">
+    <a href="#" class="tts-replay btn btn-primary"><i class="fas fa-play"></i> REPLAY</a>
+    <a href="#" class="tts-stop btn btn-primary"><i class="fas fa-stop"></i> STOP</a>
+    <a href="#" class="tts-mute btn btn-primary"><i class="fas fa-volume-up"></i> Sound ON</a>
+    <a href="#" class="tts-unmute btn btn-primary d-none"><i class="fas fa-volume-mute"></i> Sound OFF</a>
+    <a href="#" class="tts-reload btn btn-primary"><i class="fas fa-sync"></i> Reload Widget</a>
+  </div>
+  
+
+  <div class="list-group">
+    <% @items.each do |tts_item| %>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <span>
+          <small>Enviado por: <%= tts_item.user.name %></small>
+          <h5 class="mb-1"><%= tts_item.text_to_speach %></h5>
+          </span>
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary px-5 tts-play" data-tts-id="<%= tts_item.id %>">Play </button>
+            <%= link_to streamers_competencia_path(tts_item), method: 'delete', class: 'btn btn-secondary pt-3' do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

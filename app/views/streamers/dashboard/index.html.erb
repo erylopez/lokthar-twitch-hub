@@ -1,0 +1,151 @@
+<div class="container mt-5 queue-data" data-streamer="<%= @streamer.channel_name %>">
+  <div class="alert alert-primary text-light-gray gradient-purple-w-border" role="alert">
+    Beta v0.1.1 - Participa del desarrollo aportando feedback en Discord!
+  </div>
+  <div class="jumbotron text-light-gray gradient-purple-w-border d-none">
+    <h1 class="display-4">Bienvenido <%= @streamer.channel_name %></h1>
+    <p class="lead">Aqui podras moderar los mensajes en espera para ser reproducidos en el widget de TTS en tu setup de obs.</p>
+    <a class="float-right btn btn-lg text-light-gray bg-primary-dark-purple border-0 px-4" href="#" role="button">Learn more</a>
+  </div>
+
+  <%= link_to "Ir a competencias", streamers_competencia_path(@streamer.channel_name) %>
+
+
+  <h2 class="pt-5">TTS Queue <%= link_to ("https://id.twitch.tv/oauth2/authorize"+
+      "?client_id=#{ENV["TWITCH_CLIENT_ID"]}"+
+      "&redirect_uri=#{flow_streamers_twitch_auth_index_url}"+
+      "&response_type=code"+
+      "&scope=channel:read:subscriptions+user:read:email+channel:manage:redemptions"+
+      "&force_verify=true"), class: 'btn text-light' do %>
+    <i class="fas fa-sync"></i>
+  <% end %></h2>
+  <audio src="/<%= @streamer.channel_name %>.mp3?cache=<%= SecureRandom.hex %>" preload="auto" id="ttsAudio"></audio>
+  <div class="py-3">
+    <a href="#" class="tts-replay btn btn-primary"><i class="fas fa-play"></i> REPLAY</a>
+    <a href="#" class="tts-stop btn btn-primary"><i class="fas fa-stop"></i> STOP</a>
+    <a href="#" class="tts-mute btn btn-primary"><i class="fas fa-volume-up"></i> Sound ON</a>
+    <a href="#" class="tts-unmute btn btn-primary d-none"><i class="fas fa-volume-mute"></i> Sound OFF</a>
+    <a href="#" class="tts-reload btn btn-primary"><i class="fas fa-sync"></i> Reload Widget</a>
+  </div>
+  
+
+  <div class="list-group">
+    <% @streamer.tts_items.pending.last(10).each do |tts_item| %>
+      <div class="list-group-item list-group-item-action">
+        <div class="d-flex w-100 justify-content-between">
+          <h5 class="mb-1"><%= tts_item.text_to_speach %></h5>
+          
+          <div class="btn-group" role="group" aria-label="Basic example">
+            <button type="button" class="btn btn-primary px-5 tts-play" data-tts-id="<%= tts_item.id %>">Play </button>
+            <button type="button" class="btn btn-secondary tts-skip" data-tts-id="<%= tts_item.id %>">SKIP </button>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% if @streamer.tts_items.accepted.any? %>
+    <h2 class="pt-5">Ultimas reproducciones</h2>
+
+    <div class="list-group">
+      <% @streamer.tts_items.accepted.first(10).each do |tts_item| %>
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= tts_item.text_to_speach %></h5>
+            
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary px-5 tts-play" data-tts-id="<%= tts_item.id %>">Re-Play</button>
+              <button type="button" class="btn btn-secondary tts-skip" data-tts-id="<%= tts_item.id %>">SKIP</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% if @streamer.tts_items.rejected.any? %>
+    <h2 class="pt-5">Rechazados</h2>
+
+    <div class="list-group">
+      <% @streamer.tts_items.rejected.last(10).each do |tts_item| %>
+        <div class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1"><%= tts_item.text_to_speach %></h5>
+            
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-primary px-5 tts-play" data-tts-id="<%= tts_item.id %>">Accept</button>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+  
+
+  <% if current_user.streamer_record == @streamer %>
+    <h2 class="pt-5">Mods</h2>
+    <form class="form-inline twitch_mod_form">
+      <div class="form-group mr-sm-3 mb-2">
+        <label for="twitch_username" class="sr-only">Twitch Username</label>
+        <input type="text" class="form-control" id="twitch_username" placeholder="Twitch Username">
+      </div>
+      <button type="submit" class="btn btn-primary mb-2">Agregar mod</button>
+    </form>
+    <ul class="list-group list-group-flush ">
+      <% @streamer.stream_mods.each do |moderator| %>
+      <li class="list-group-item text-dark">
+        <%= moderator.user.name %>
+        <button type="button" class="btn btn-secondary remove-mod" data-id="<%= moderator.id %>">Remove</button>
+      </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @streamer.stream_rewards.any? %>
+    <h2 class="pt-5">Channel Rewards <%= link_to ("https://id.twitch.tv/oauth2/authorize"+
+      "?client_id=#{ENV["TWITCH_CLIENT_ID"]}"+
+      "&redirect_uri=#{flow_streamers_twitch_auth_index_url}"+
+      "&response_type=code"+
+      "&scope=channel:read:subscriptions+user:read:email+channel:manage:redemptions"+
+      "&force_verify=true"), class: 'btn text-light' do %>
+    <i class="fas fa-sync"></i>
+  <% end %></h2>
+    <div class="card-group">
+      <% @streamer.stream_rewards.each do |reward| %>
+        <div class="card bg-dark text-white" style="background-color: <%= reward.background_color %>">
+          <div class="card-header">
+            <%= reward.title %>
+          </div>
+          <img src="<%= reward.default_image_2x %>" class="card-img-top py-4" alt="reward_image" style="width: 56px; margin: auto">
+          <div class="card-body">
+            <p class="card-text"><%= reward.prompt %></p>
+          </div>
+          <div class="card-footer text-muted">
+            Puntos: <%= reward.cost %>
+          </div>
+        </div>
+      <% end %>
+    </div>  
+  <% end %>
+  
+
+  <h2 class="pt-5">Subs information
+  <%= link_to ("https://id.twitch.tv/oauth2/authorize"+
+      "?client_id=#{ENV["TWITCH_CLIENT_ID"]}"+
+      "&redirect_uri=#{flow_streamers_twitch_auth_index_url}"+
+      "&response_type=code"+
+      "&scope=channel:read:subscriptions+user:read:email+channel:manage:redemptions"+
+      "&force_verify=true"), class: 'btn text-light' do %>
+    <i class="fas fa-sync"></i>
+  <% end %>
+  </h2>
+  <p>Subs: <%= @streamer.user_streamers.count %></p>
+
+  <ul class="list-group list-group-flush ">
+    <% @streamer.user_streamers.subs.each do |info| %>
+      <li class="list-group-item text-dark"><%= info.subscription_data.try(:[], 'user_name') %> (<%= info.subscription_data.try(:[],'plan_name') %>)</li>
+    <% end %>
+  </ul>
+  
+</div>
+
